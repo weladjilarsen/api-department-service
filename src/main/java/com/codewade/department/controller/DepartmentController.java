@@ -36,4 +36,12 @@ public class DepartmentController {
         Department findDepartment = departmentService.findDepartmentById(departmentId);
         return new ResponseEntity<>(findDepartment, HttpStatus.OK);
     }
+
+    @PutMapping("/{id}")
+    @ApiOperation(value = "Update department  with ID not null and exist",code = 200)
+    public ResponseEntity<Department> UpdateDepartment(@Valid @PathVariable("id") Long departmentId, Department department){
+        log.info("Inside UpdateDepartment method of DepartmentController");
+        Department UpdateDepartment = departmentService.UpdateDepartment(departmentId,department);
+        return new ResponseEntity<>(UpdateDepartment, HttpStatus.OK);
+    }
 }
